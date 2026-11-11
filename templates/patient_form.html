@@ -1,0 +1,29 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>{{ 'New patient' if mode == 'new' else ('Verify chart' if issues else 'Edit patient') }}</h1>
+{% if mode == 'edit' and not issues %}<p>Patient ID <b>{{ p['source_id'] or '—' }}</b></p>{% endif %}
+{% if issues %}
+<div class="flash error">Incomplete — this chart is not on the team board. Each rule below has to be cleared. It appears for the team once every one is resolved.</div>
+<div class="rules">
+{% for item in issues %}{% set r = rule_for_flag(item) %}
+<section class="rule">
+  <div class="rulehead"><b>{{ r.rule }}</b> <span class="tag issue">{{ item }}</span></div>
+  <p>{{ r.why }}</p>
+</section>
+{% endfor %}
+</div>
+{% elif mode == 'edit' and on_board %}
+<div class="flash ok">Complete. This chart is on the team board.</div>
+{% elif mode == 'edit' %}
+<div class="flash ok">Complete. Restore it from the chart list to put it back on the team board.</div>
+{% endif %}
+<form method="post" class="panel"><input type="hidden" name="csrf" value="{{ csrf }}">
+{% include "_patient_fields.html" %}
+<p><button>Save</button> <a class="btn sec" href="{{ url_for('admin_home') }}">Cancel</a></p></form>
+{% if mode == 'edit' %}
+<h2>Source fields</h2><div class="panel"><p>Arrival (as given): <b>{{ p['arrival_time'] or '—' }}</b> · Origin: {{ p['origin'] }}</p>
+<p class="muted">Other fields kept from the imported JSON, unmodified:</p><pre>{{ p['extra_json'] or '(none)' }}</pre></div>
+<h2>Recent vitals</h2><table><tr><th>Time</th><th>HR</th><th>BP</th><th>SpO₂</th><th>Temp</th><th>Source</th></tr>
+{% for v in vitals %}<tr><td>{{ v.recorded_at }}</td><td>{{ v.hr|fmt }}</td><td>{{ v.bp|fmt }}</td><td>{{ v.spo2|fmt }}</td><td>{{ v.temp|fmt }}</td><td>{{ v.origin }}</td></tr>{% else %}<tr><td colspan="6" class="muted">None.</td></tr>{% endfor %}</table>
+<h2>Change history</h2><table><tr><th>When</th><th>Who</th><th>Action</th><th>Detail</th></tr>
+{% for h in history %}<tr><td>{{ h.ts }}</td><td>{{ h.actor }}</td><td>{{ h.action }}</td><td><pre>{{ h.detail }}</pre></td></tr>{% else %}<tr><td colspan="4" class="muted">No manual changes yet.</td></tr>{% endfor %}</table>
+{% endif %}{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>Import JSON snapshot</h1>
+
+<form method="post" class="panel"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="save_rules">
+<h2 style="margin-top:0">Import rules</h2>
+<p class="muted">These rows are read from <code>import_rules.yaml</code>. <b>Apply</b> is <code>enabled: true</code> and holds a chart. <b>Ignore</b> is <code>enabled: false</code> and does not. Saving writes that file and rechecks charts already loaded. To add a rule, add a block in the yaml. A new id needs <code>flag</code>, <code>why</code>, and <code>check</code>. The example is at the top of the file.</p>
+<table>
+<tr><th>Rule</th><th>What it catches</th><th>Charts matched</th><th></th></tr>
+{% for r in rules %}
+<tr>
+<td>{{ r.name }}</td>
+<td>{{ r.catches }}</td>
+<td>{{ r.held }}</td>
+<td><select class="mode" name="rule_{{ r.id }}">
+  <option value="apply" {{ 'selected' if r.mode == 'apply' }}>Apply</option>
+  <option value="ignore" {{ 'selected' if r.mode == 'ignore' }}>Ignore</option>
+</select></td>
+</tr>
+{% endfor %}
+</table>
+<p><button>Save rules</button></p>
+</form>
+
+<form method="post" enctype="multipart/form-data" class="panel"><input type="hidden" name="csrf" value="{{ csrf }}">
+<label>Upload file</label><input type="file" name="file" accept=".json,application/json">
+<label>…or paste raw JSON</label><textarea class="raw" name="raw" spellcheck="false"></textarea>
+<label>Mode</label>
+<select name="mode"><option value="replace">Replace — reset the board to exactly this snapshot</option>
+<option value="merge">Merge — update/add records by id, keep everything else</option></select>
+<label>For Replace, type REPLACE to confirm</label><input name="confirm" autocomplete="off" style="max-width:12em">
+<p class="muted">The import is all-or-nothing: if anything is invalid the board is left untouched. The exact JSON is archived and the import is audit-logged. Holds follow the rules saved above.</p>
+<button>Import</button></form>
+<h2>Previous imports</h2><table><tr><th>When</th><th>By</th><th>Mode</th><th>SHA-256</th><th>Result</th></tr>
+{% for h in history %}<tr><td>{{ h.ts }}</td><td>{{ h.actor }}</td><td>{{ h.mode }}</td><td><code>{{ h.sha256[:12] }}</code></td><td>{{ h.summary }}</td></tr>{% else %}<tr><td colspan="5" class="muted">None.</td></tr>{% endfor %}</table>
+{% endblock %}

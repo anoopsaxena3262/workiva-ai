@@ -1,0 +1,114 @@
+# Import rules. rules.py reads this file whenever charts are checked.
+# enabled: true  holds a matching chart for a person.
+# enabled: false does not hold the chart. The imported value is never rewritten.
+#
+# Turn a rule off by setting enabled to false. Add a rule by copying a block.
+# A built-in id (the ones below) uses the check already in the app.
+# A new id needs flag, why, and check. Example:
+#
+# - id: note_says_stat
+#   enabled: true
+#   name: Note says STAT
+#   catches: Notes contain STAT.
+#   flag: NOTE SAYS STAT
+#   why: Notes contain STAT. Edit the note or confirm the chart.
+#   check:
+#     field: notes
+#     op: contains
+#     value: STAT
+#
+# field: name, status, bed, chief_complaint, notes, triage_level, age, sex,
+#        hr, bp, spo2, temp, source_id, rank
+# op: contains, equals, missing, present, gt, lt, in
+# all: every check in the list must match. {field} in flag is filled from the chart.
+
+rules:
+  - id: duplicate_id
+    enabled: true
+    name: Duplicate patient ID
+    catches: The same source id on more than one active chart. Both rows are kept.
+
+  - id: bed_shared
+    enabled: true
+    name: Bed shared
+    catches: More than one active, non-discharged patient on the same bed. Rooms whose type contains "Overflow" are exempt.
+
+  - id: no_bed
+    enabled: true
+    name: No bed
+    catches: An active, non-discharged chart with an empty bed.
+
+  - id: age
+    enabled: true
+    name: Age
+    catches: Missing, or not a whole number from 0 to 130. The imported value is stored as given.
+
+  - id: pediatric_room
+    enabled: true
+    name: Pediatric room
+    catches: Age 18 or older in a room whose type contains "pediatric", unless the chart is discharged. 18+ is a policy line, not a fact from the file.
+
+  - id: triage_value
+    enabled: true
+    name: Triage value
+    catches: A triage level is present and is not recognizable as 1–5. An empty triage level is not this flag.
+
+  - id: waiting_for_bed
+    enabled: true
+    name: Waiting for bed
+    catches: Status text says "waiting for bed" and a bed is set.
+
+  - id: arrival_time
+    enabled: true
+    name: Arrival time
+    catches: A value is present and is not ISO-8601.
+
+  - id: vitals_time
+    enabled: true
+    name: Vitals time
+    catches: A vitals timestamp is earlier than arrival, or the latest vitals have no time.
+
+  - id: vitals_values
+    enabled: true
+    name: Vitals values
+    catches: A vital is missing, N/A, or outside the policy window. HR 20–250, SpO2 50–100, temp 90–110 °F, systolic 50–260, diastolic below systolic.
+
+  - id: room_not_in_master
+    enabled: true
+    name: Room not in master
+    catches: The bed is not a room in the room list.
+
+  - id: not_assigned_in_room
+    enabled: true
+    name: Not assigned in the room
+    catches: The room's occupied_by is not this patient's id.
+
+  # Decision 2026-10-07: triage level and status text are not a rule unless this file turns them on.
+  - id: status_critical_low_triage
+    enabled: false
+    name: Status critical, triage 4 or 5
+    catches: Status text contains critical while triage is 4 or 5.
+    flag: "STATUS CRITICAL, TRIAGE {triage_level}"
+    why: Status text contains critical and triage rank is 4 or 5. Both values are kept as imported. Change the status or the triage level if they should agree.
+    check:
+      all:
+        - field: status
+          op: contains
+          value: critical
+        - field: rank
+          op: in
+          value: [4, 5]
+
+  - id: status_not_yet_triaged
+    enabled: false
+    name: Not yet triaged, level set
+    catches: Status text says not yet triaged while a triage level is set.
+    flag: STATUS SAYS NOT TRIAGED, LEVEL SET
+    why: Status text says not yet triaged, and a triage level is set. Both values are kept as imported. Change the status or clear the triage level if they should agree.
+    check:
+      all:
+        - field: status
+          op: contains
+          value: not yet triaged
+        - field: triage_level
+          op: present

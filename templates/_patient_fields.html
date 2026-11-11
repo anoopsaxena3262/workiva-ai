@@ -1,0 +1,32 @@
+<div class="grid">
+ {% if issues %}
+ <div><label>Patient ID</label><input name="source_id" value="{{ p['source_id'] or '' }}" autocomplete="off">
+  <span class="muted">Correct a wrong id. Saving writes this id onto the room record.</span></div>
+ {% endif %}
+ <div><label>Name *</label><input name="name" value="{{ p['name'] or '' }}" required></div>
+ <div><label>Age</label><input name="age" inputmode="numeric" value="{{ p['age'] if p['age'] is not none else '' }}"></div>
+ <div><label>Sex</label><input name="sex" value="{{ p['sex'] or '' }}"></div>
+ <div><label>Bed / room</label>
+  <select name="bed">
+   <option value="">—</option>
+   {% for r in rooms %}
+   <option value="{{ r.id }}" {{ 'selected' if p['bed'] == r.id or p['bed'] == r.name }}>{{ r.name }}{% if r.room_type %} · {{ r.room_type }}{% endif %}{% if r.occupied_by %} · occupied by {{ r.occupied_by }}{% else %} · open{% endif %}</option>
+   {% endfor %}
+   {% if p['bed'] and p['bed'] not in room_ids %}<option value="{{ p['bed'] }}" selected>{{ p['bed'] }} (not in room master)</option>{% endif %}
+  </select>
+  <span class="muted">Saving a room from the list writes this patient into that room's record.</span>
+ </div>
+ <div><label>Triage level</label><input name="triage_level" value="{{ p['triage_level'] or '' }}" placeholder="as written, e.g. 2"></div>
+ <div><label>Clinical status</label><input name="status" value="{{ p['status'] or '' }}"></div>
+ <div><label>Attending</label><select name="doctor_id"><option value="">—</option>
+  {% for d in doctors %}<option value="{{ d.id }}" {{ 'selected' if p['doctor_id'] == d.id }}>{{ d.name }}{{ ' — ' ~ ([d.role, d.specialty]|select|join(', ')) if (d.role or d.specialty) }}</option>{% endfor %}</select></div>
+</div>
+<label>Chief complaint</label><input name="chief_complaint" value="{{ p['chief_complaint'] or '' }}">
+<label>Notes</label><textarea name="notes" rows="3">{{ p['notes'] or '' }}</textarea>
+<h2>New vitals reading <span class="muted" style="font-size:.6em">(leave blank to keep existing)</span></h2>
+<div class="grid">
+ <div><label>HR</label><input name="v_hr" inputmode="decimal" value="{{ request.form.get('v_hr','') }}"></div>
+ <div><label>BP</label><input name="v_bp" placeholder="120/80" value="{{ request.form.get('v_bp','') }}"></div>
+ <div><label>SpO₂ %</label><input name="v_spo2" inputmode="decimal" value="{{ request.form.get('v_spo2','') }}"></div>
+ <div><label>Temp</label><input name="v_temp" inputmode="decimal" value="{{ request.form.get('v_temp','') }}"></div>
+</div>

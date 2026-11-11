@@ -1,0 +1,1332 @@
+{
+  "facility": "Whitaker Memorial ER",
+  "system_status": "OFFLINE - fallback data snapshot",
+  "snapshot_generated_at": "2026-07-10T08:45:00Z",
+  "patients": [
+    {
+      "patient_id": "P-1042",
+      "name": "Jordan Alvarez",
+      "age": 54,
+      "bed": "A3",
+      "chief_complaint": "chest pain",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T08:14:00Z",
+      "vitals": {
+        "hr": 98,
+        "bp_systolic": 142,
+        "bp_diastolic": 88,
+        "spo2": 96,
+        "temp_f": 98.6,
+        "last_updated": "2026-07-10T09:02:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1043",
+      "name": "Priya Natarajan",
+      "age": 29,
+      "bed": "A7",
+      "chief_complaint": "laceration, left hand",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:20:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 118,
+        "bp_diastolic": 76,
+        "spo2": 99,
+        "temp_f": 98.2,
+        "last_updated": "2026-07-10T08:35:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1044",
+      "name": "Marcus Webb",
+      "age": 71,
+      "bed": "B1",
+      "chief_complaint": "shortness of breath",
+      "triage_level": 1,
+      "arrival_time": "2026-07-10T07:58:00Z",
+      "vitals": {
+        "hr": 118,
+        "bp_systolic": 96,
+        "bp_diastolic": 60,
+        "spo2": 88,
+        "temp_f": 99.9,
+        "last_updated": "2026-07-10T09:10:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1045",
+      "name": "Sana Okoro",
+      "age": 8,
+      "bed": "PEDS2",
+      "chief_complaint": "fever, vomiting",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T08:40:00Z",
+      "vitals": {
+        "hr": 110,
+        "bp_systolic": 100,
+        "bp_diastolic": 64,
+        "spo2": 97,
+        "temp_f": 998.6,
+        "last_updated": "2026-07-10T08:52:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1046",
+      "name": "Diane Kowalski",
+      "age": 66,
+      "bed": null,
+      "chief_complaint": "abdominal pain",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T08:44:00Z",
+      "vitals": null,
+      "status": "waiting room - not yet triaged"
+    },
+    {
+      "patient_id": "P-1047",
+      "name": "Tomas Reyes",
+      "age": 45,
+      "bed": "A5",
+      "chief_complaint": "possible fracture, right ankle",
+      "triage_level": "3",
+      "arrival_time": "07/10/2026 8:10 AM",
+      "vitals": {
+        "hr": 88,
+        "bp_systolic": 130,
+        "bp_diastolic": 82,
+        "spo2": 98,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T08:50:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1048",
+      "name": "Helen Ostrowski",
+      "age": 82,
+      "bed": "B4",
+      "chief_complaint": "confusion, possible stroke",
+      "triage_level": 1,
+      "arrival_time": "2026-07-10T08:05:00Z",
+      "vitals": {
+        "hr": 104,
+        "bp_systolic": 168,
+        "bp_diastolic": 96,
+        "spo2": 94,
+        "temp_f": 97.9,
+        "last_updated": "2026-07-10T08:58:00Z"
+      },
+      "status": "critical - stroke protocol activated"
+    },
+    {
+      "patient_id": "P-1049",
+      "name": "Kevin Lindqvist",
+      "age": 37,
+      "bed": "A3",
+      "chief_complaint": "allergic reaction",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T08:38:00Z",
+      "vitals": {
+        "hr": 112,
+        "bp_systolic": 110,
+        "bp_diastolic": 70,
+        "spo2": 95,
+        "temp_f": 99.1,
+        "last_updated": "2026-07-10T08:47:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1050",
+      "name": "Grace Muthoni",
+      "age": 24,
+      "bed": "A9",
+      "chief_complaint": "migraine",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:48:00Z",
+      "vitals": {
+        "hr": 76,
+        "bp_systolic": 112,
+        "bp_diastolic": 72,
+        "spo2": "N/A",
+        "temp_f": 98.0,
+        "last_updated": "2026-07-10T08:53:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1051",
+      "name": "Otis Fielding",
+      "age": 59,
+      "bed": "B2",
+      "chief_complaint": "chest pain",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T08:30:00Z",
+      "vitals": {
+        "hr": 90,
+        "bp_systolic": 138,
+        "bp_diastolic": 84,
+        "spo2": 97,
+        "temp_f": 98.7,
+        "last_updated": "2026-07-10T08:59:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1052",
+      "name": "Oscar Ibarra",
+      "age": 5,
+      "bed": "A8",
+      "chief_complaint": "fracture suspected",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T06:43:00Z",
+      "vitals": {
+        "hr": 91,
+        "bp_systolic": 100,
+        "bp_diastolic": 92,
+        "spo2": 92,
+        "temp_f": 99.0,
+        "last_updated": "2026-07-10T08:05:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1053",
+      "name": "Nate Petrov",
+      "age": 66,
+      "bed": "A11",
+      "chief_complaint": "syncope",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T09:14:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 112,
+        "bp_diastolic": 55,
+        "spo2": 92,
+        "temp_f": 100.5,
+        "last_updated": "2026-07-10T08:44:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1054",
+      "name": "Brianna Winters",
+      "age": 37,
+      "bed": "B6",
+      "chief_complaint": "food poisoning suspected",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T06:24:00Z",
+      "vitals": {
+        "hr": 88,
+        "bp_systolic": 149,
+        "bp_diastolic": 77,
+        "spo2": 94,
+        "temp_f": 99.8,
+        "last_updated": "2026-07-10T08:46:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1055",
+      "name": "Dana Jimenez",
+      "age": 17,
+      "bed": "A4",
+      "chief_complaint": "anxiety attack",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T08:53:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 150,
+        "bp_diastolic": 78,
+        "spo2": 90,
+        "temp_f": 99.7,
+        "last_updated": "2026-07-10T08:02:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1056",
+      "name": "Ravi Petrov",
+      "age": 39,
+      "bed": "A12",
+      "chief_complaint": "flu-like symptoms",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T09:17:00Z",
+      "vitals": {
+        "hr": 76,
+        "bp_systolic": 148,
+        "bp_diastolic": 78,
+        "spo2": 91,
+        "temp_f": 97.9,
+        "last_updated": "2026-07-10T09:13:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1057",
+      "name": "Ravi Suarez",
+      "age": 91,
+      "bed": "A4",
+      "chief_complaint": "seizure",
+      "triage_level": 5,
+      "vitals": {
+        "hr": 85,
+        "bp_systolic": 105,
+        "bp_diastolic": 84,
+        "spo2": 87,
+        "temp_f": 98.8,
+        "last_updated": "2026-07-10T08:43:00Z"
+      },
+      "status": "stable - monitoring",
+      "arrival_time": null
+    },
+    {
+      "patient_id": "P-1058",
+      "name": "Umar Yilmaz",
+      "age": 9,
+      "bed": "A12",
+      "chief_complaint": "abdominal pain",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T08:04:00Z",
+      "vitals": {
+        "hr": 91,
+        "bp_systolic": 140,
+        "bp_diastolic": 75,
+        "spo2": 96,
+        "temp_f": 98.1,
+        "last_updated": "2026-07-10T09:25:00Z"
+      },
+      "status": "awaiting specialist consult"
+    },
+    {
+      "patient_id": "P-1059",
+      "name": "Petra Eriksson",
+      "age": 20,
+      "bed": "HALLWAY1",
+      "chief_complaint": "fracture suspected",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T08:47:00Z",
+      "vitals": {
+        "hr": 93,
+        "bp_systolic": 132,
+        "bp_diastolic": 80,
+        "spo2": 93,
+        "temp_f": 98.8,
+        "last_updated": "2026-07-10T08:32:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1060",
+      "name": "Fiona Gomez",
+      "age": 8,
+      "bed": "HALLWAY1",
+      "chief_complaint": "shortness of breath",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T09:38:00Z",
+      "vitals": {
+        "hr": 70,
+        "bp_systolic": 119,
+        "bp_diastolic": 93,
+        "spo2": 91,
+        "temp_f": 101.5,
+        "last_updated": "2026-07-10T09:35:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1061",
+      "name": "Alicia Sato",
+      "age": 16,
+      "bed": "B3",
+      "chief_complaint": "syncope",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T06:18:00Z",
+      "vitals": {
+        "hr": 81,
+        "bp_systolic": 124,
+        "bp_diastolic": 55,
+        "spo2": 89,
+        "temp_f": 101.3,
+        "last_updated": "2026-07-10T09:32:00Z"
+      },
+      "status": "discharge pending"
+    },
+    {
+      "patient_id": "P-1062",
+      "name": "Xander Mbeki",
+      "age": 66,
+      "bed": "B5",
+      "chief_complaint": "flu-like symptoms",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T07:09:00Z",
+      "vitals": {
+        "hr": 73,
+        "bp_systolic": 105,
+        "bp_diastolic": 89,
+        "spo2": 92,
+        "temp_f": 101.3,
+        "last_updated": "2026-07-10T08:38:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1063",
+      "name": "Umar Grant",
+      "age": 4,
+      "bed": "A11",
+      "chief_complaint": "dehydration",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T06:15:00Z",
+      "vitals": {
+        "hr": 103,
+        "bp_systolic": 100,
+        "bp_diastolic": 86,
+        "spo2": 92,
+        "temp_f": 100.7,
+        "last_updated": "2026-07-10T08:08:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1064",
+      "name": "Ravi Ferraro",
+      "age": 72,
+      "bed": null,
+      "chief_complaint": "asthma exacerbation",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T07:59:00Z",
+      "vitals": {
+        "hr": 102,
+        "bp_systolic": 141,
+        "bp_diastolic": 67,
+        "spo2": 98,
+        "temp_f": 100.3,
+        "last_updated": "2026-07-10T09:42:00Z"
+      },
+      "status": "discharged"
+    },
+    {
+      "patient_id": "P-1065",
+      "name": "Petra Yamamoto",
+      "age": 58,
+      "bed": "A6",
+      "chief_complaint": "concussion suspected",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T07:04:00Z",
+      "vitals": {
+        "hr": 78,
+        "bp_systolic": 132,
+        "bp_diastolic": 90,
+        "spo2": 88,
+        "temp_f": 98.2,
+        "last_updated": "2026-07-10T08:00:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1066",
+      "name": "Elena Underwood",
+      "age": 82,
+      "bed": "A2",
+      "chief_complaint": "laceration",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T06:32:00Z",
+      "vitals": {
+        "hr": 92,
+        "bp_systolic": 137,
+        "bp_diastolic": 86,
+        "spo2": 94,
+        "temp_f": 98.1,
+        "last_updated": "2026-07-10T08:46:00Z"
+      },
+      "status": "discharge pending"
+    },
+    {
+      "patient_id": "P-1067",
+      "name": "Kwame Lindgren",
+      "age": 62,
+      "bed": "PEDS1",
+      "chief_complaint": "kidney stone suspected",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T06:06:00Z",
+      "vitals": {
+        "hr": 106,
+        "bp_systolic": 117,
+        "bp_diastolic": 82,
+        "spo2": 95,
+        "temp_f": 99.0,
+        "last_updated": "2026-07-10T08:43:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1068",
+      "name": "Petra Quiroz",
+      "age": 14,
+      "bed": "B6",
+      "chief_complaint": "sprained ankle",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T07:12:00Z",
+      "vitals": {
+        "hr": 91,
+        "bp_systolic": 123,
+        "bp_diastolic": 63,
+        "spo2": 96,
+        "temp_f": 99.0,
+        "last_updated": "2026-07-10T09:29:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1069",
+      "name": "Paolo Fischer",
+      "age": 58,
+      "bed": "HALLWAY1",
+      "chief_complaint": "flu-like symptoms",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T06:41:00Z",
+      "vitals": {
+        "hr": 85,
+        "bp_systolic": 95,
+        "bp_diastolic": 60,
+        "spo2": 94,
+        "temp_f": 101.2,
+        "last_updated": "2026-07-10T08:10:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1070",
+      "name": "Aaron Grant",
+      "age": 63,
+      "bed": "A2",
+      "chief_complaint": "anxiety attack",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T09:00:00Z",
+      "vitals": {
+        "hr": 97,
+        "bp_systolic": 145,
+        "bp_diastolic": 84,
+        "spo2": 104,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T09:09:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1071",
+      "name": "Mira Tanaka",
+      "age": 29,
+      "bed": "HALLWAY1",
+      "chief_complaint": "cellulitis",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T08:03:00Z",
+      "vitals": {
+        "hr": 63,
+        "bp_systolic": 125,
+        "bp_diastolic": 87,
+        "spo2": 90,
+        "temp_f": 101.2,
+        "last_updated": "2026-07-10T08:03:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1072",
+      "name": "Gabriel Gomez",
+      "age": 25,
+      "bed": "A12",
+      "chief_complaint": "laceration",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T06:56:00Z",
+      "vitals": {
+        "hr": 103,
+        "bp_systolic": 132,
+        "bp_diastolic": 93,
+        "spo2": 93,
+        "temp_f": 97.4,
+        "last_updated": "2026-07-10T08:26:00Z"
+      },
+      "status": "awaiting specialist consult"
+    },
+    {
+      "patient_id": "P-1073",
+      "name": "Ravi Moreau",
+      "age": 74,
+      "bed": "B3",
+      "chief_complaint": "medication reaction",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T08:15:00Z",
+      "vitals": {
+        "hr": 83,
+        "bp_systolic": 103,
+        "bp_diastolic": 74,
+        "spo2": 93,
+        "temp_f": 99.2,
+        "last_updated": "2026-07-10T08:00:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1074",
+      "name": "Dana Okafor",
+      "age": 74,
+      "bed": "HALLWAY1",
+      "chief_complaint": "laceration",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T08:08:00Z",
+      "vitals": {
+        "hr": 73,
+        "bp_systolic": 110,
+        "bp_diastolic": 78,
+        "spo2": 86,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T09:53:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1075",
+      "name": "Ivan Underwood",
+      "age": 40,
+      "bed": "TRAUMA2",
+      "chief_complaint": "panic attack",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:59:00Z",
+      "vitals": {
+        "hr": 89,
+        "bp_systolic": 103,
+        "bp_diastolic": 71,
+        "spo2": 88,
+        "temp_f": 97.7,
+        "last_updated": "2026-07-10T08:47:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1076",
+      "name": "Julia Kowalczyk",
+      "age": 36,
+      "bed": "B6",
+      "chief_complaint": "allergic reaction",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T08:32:00Z",
+      "vitals": {
+        "hr": 90,
+        "bp_systolic": 149,
+        "bp_diastolic": 58,
+        "spo2": 92,
+        "temp_f": 97.6,
+        "last_updated": "2026-07-10T09:53:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1055",
+      "name": "Rosa Delgado",
+      "age": 2,
+      "bed": "HALLWAY1",
+      "chief_complaint": "shortness of breath",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T07:47:00Z",
+      "vitals": {
+        "hr": 89,
+        "bp_systolic": 140,
+        "bp_diastolic": 82,
+        "spo2": 94,
+        "temp_f": 99.6,
+        "last_updated": "2026-07-10T08:04:00Z"
+      },
+      "status": "waiting room - not yet triaged"
+    },
+    {
+      "patient_id": "P-1078",
+      "name": "Theo Kowalczyk",
+      "age": 71,
+      "bed": "HALLWAY2",
+      "chief_complaint": "dehydration",
+      "triage_level": 1,
+      "arrival_time": "2026-07-10T07:27:00Z",
+      "vitals": {
+        "hr": 104,
+        "bp_systolic": 114,
+        "bp_diastolic": 78,
+        "spo2": 94,
+        "temp_f": 101.1,
+        "last_updated": "2026-07-10T08:57:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1079",
+      "name": "Wyatt Ortega",
+      "age": 89,
+      "bed": "B7",
+      "chief_complaint": "fever",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T09:39:00Z",
+      "vitals": {
+        "hr": 108,
+        "bp_systolic": 110,
+        "bp_diastolic": 65,
+        "spo2": 93,
+        "temp_f": 101.4,
+        "last_updated": "2026-07-10T08:56:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1080",
+      "name": "Aaron Chen",
+      "age": 24,
+      "bed": "PEDS1",
+      "chief_complaint": "vomiting",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:10:00Z",
+      "vitals": {
+        "hr": 93,
+        "bp_systolic": 101,
+        "bp_diastolic": 79,
+        "spo2": 93,
+        "temp_f": 101.0,
+        "last_updated": "2026-07-10T09:14:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1081",
+      "name": "Mira Eriksson",
+      "age": 46,
+      "bed": "A12",
+      "chief_complaint": "panic attack",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T06:42:00Z",
+      "vitals": {
+        "hr": 81,
+        "bp_systolic": 116,
+        "bp_diastolic": 72,
+        "spo2": 93,
+        "temp_f": 100.9,
+        "last_updated": "2026-07-10T09:22:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1082",
+      "name": "Petra Hussain",
+      "age": 53,
+      "bed": "HALLWAY1",
+      "chief_complaint": "chest congestion",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T06:07:00Z",
+      "vitals": {
+        "hr": 76,
+        "bp_systolic": 132,
+        "bp_diastolic": 71,
+        "spo2": 89,
+        "temp_f": 97.4,
+        "last_updated": "2026-07-10T09:22:00Z"
+      },
+      "status": "discharge pending"
+    },
+    {
+      "patient_id": "P-1083",
+      "name": "Victor Vasquez",
+      "age": -9,
+      "bed": "A6",
+      "chief_complaint": "asthma exacerbation",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T07:16:00Z",
+      "vitals": {
+        "hr": 69,
+        "bp_systolic": 122,
+        "bp_diastolic": 55,
+        "spo2": 93,
+        "temp_f": 99.4,
+        "last_updated": "2026-07-10T08:23:00Z"
+      },
+      "status": "awaiting specialist consult"
+    },
+    {
+      "patient_id": "P-1084",
+      "name": "Brianna Fischer",
+      "age": 87,
+      "bed": "B6",
+      "chief_complaint": "UTI symptoms",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T08:32:00Z",
+      "vitals": {
+        "hr": 71,
+        "bp_systolic": 121,
+        "bp_diastolic": 75,
+        "spo2": 91,
+        "temp_f": 98.9,
+        "last_updated": "2026-07-10T09:35:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1085",
+      "name": "Iris Nowak",
+      "age": 55,
+      "bed": "A10",
+      "chief_complaint": "anxiety attack",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:25:00Z",
+      "vitals": {
+        "hr": 85,
+        "bp_systolic": 95,
+        "bp_diastolic": 74,
+        "spo2": 94,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T09:50:00Z"
+      },
+      "status": "stable - monitoring"
+    },
+    {
+      "patient_id": "P-1086",
+      "name": "Lena Nilsson",
+      "age": 85,
+      "bed": "PEDS3",
+      "chief_complaint": "concussion suspected",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T09:50:00Z",
+      "vitals": {
+        "hr": 100,
+        "bp_systolic": 105,
+        "bp_diastolic": 60,
+        "spo2": 95,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T09:05:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1087",
+      "name": "Xander Quintero",
+      "age": 88,
+      "bed": "A11",
+      "chief_complaint": "panic attack",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T06:02:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 134,
+        "bp_diastolic": 59,
+        "spo2": 93,
+        "temp_f": 99.2,
+        "last_updated": "2026-07-10T08:45:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1088",
+      "name": "Theo Zimmerman",
+      "age": 65,
+      "bed": "A1",
+      "chief_complaint": "shortness of breath",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T09:14:00Z",
+      "vitals": {
+        "hr": 80,
+        "bp_systolic": 139,
+        "bp_diastolic": 88,
+        "spo2": 96,
+        "temp_f": 99.2,
+        "last_updated": "2026-07-10T08:58:00Z"
+      },
+      "status": "in treatment"
+    },
+    {
+      "patient_id": "P-1089",
+      "name": "Hassan Eriksson",
+      "age": 19,
+      "bed": "TRAUMA2",
+      "chief_complaint": "nosebleed, uncontrolled",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T08:48:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 147,
+        "bp_diastolic": 87,
+        "spo2": 92,
+        "temp_f": 99.0,
+        "last_updated": "2026-07-10T09:57:00Z"
+      },
+      "status": "critical - MD at bedside"
+    },
+    {
+      "patient_id": "P-1090",
+      "name": "Katya Weiss",
+      "age": 62,
+      "bed": "A12",
+      "chief_complaint": "food poisoning suspected",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T09:40:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 123,
+        "bp_diastolic": 59,
+        "spo2": 92,
+        "temp_f": 100.3,
+        "last_updated": "2026-07-10T08:17:00Z"
+      },
+      "status": "waiting room - not yet triaged"
+    },
+    {
+      "patient_id": "P-1091",
+      "name": "Vera Vasquez",
+      "age": 71,
+      "bed": "A12",
+      "chief_complaint": "shortness of breath",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T07:45:00Z",
+      "vitals": {
+        "hr": 91,
+        "bp_systolic": 121,
+        "bp_diastolic": 81,
+        "spo2": 92,
+        "temp_f": 98.6,
+        "last_updated": "2026-07-10T09:26:00Z"
+      },
+      "status": "awaiting specialist consult"
+    },
+    {
+      "patient_id": "P-1092",
+      "name": "Derek Ortega",
+      "age": 55,
+      "bed": "HALLWAY2",
+      "chief_complaint": "food poisoning suspected",
+      "triage_level": 0,
+      "arrival_time": "2026-07-10T09:30:00Z",
+      "vitals": {
+        "hr": 75,
+        "bp_systolic": 114,
+        "bp_diastolic": 79,
+        "spo2": 92,
+        "temp_f": 100.9,
+        "last_updated": "2026-07-10T09:34:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1093",
+      "name": "Willa Weiss",
+      "age": 71,
+      "bed": "A12",
+      "chief_complaint": "post-op complication",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T07:17:00Z",
+      "vitals": {
+        "hr": 81,
+        "bp_systolic": 96,
+        "bp_diastolic": 79,
+        "spo2": 91,
+        "temp_f": 98.6,
+        "last_updated": "2026-07-10T09:46:00Z"
+      },
+      "status": "observation"
+    },
+    {
+      "patient_id": "P-1094",
+      "name": "Katya Eriksson",
+      "age": 18,
+      "bed": "A1",
+      "chief_complaint": "syncope",
+      "triage_level": 5,
+      "arrival_time": "2026-07-10T06:05:00Z",
+      "vitals": {
+        "hr": 82,
+        "bp_systolic": 103,
+        "bp_diastolic": 84,
+        "spo2": 89,
+        "temp_f": 98.0,
+        "last_updated": "2026-07-10T09:24:00Z"
+      },
+      "status": "awaiting specialist consult"
+    },
+    {
+      "patient_id": "P-1095",
+      "name": "Umar Ortega",
+      "age": 60,
+      "bed": "B8",
+      "chief_complaint": "food poisoning suspected",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T09:16:00Z",
+      "vitals": {
+        "hr": 77,
+        "bp_systolic": 96,
+        "bp_diastolic": 89,
+        "spo2": 93,
+        "temp_f": 97.4,
+        "last_updated": "2026-07-10T09:14:00Z"
+      },
+      "status": "waiting room - not yet triaged"
+    },
+    {
+      "patient_id": "P-1096",
+      "name": "Petra Fischer",
+      "age": 85,
+      "bed": "A12",
+      "chief_complaint": "chest pain",
+      "triage_level": 1,
+      "arrival_time": "2026-07-10T06:39:00Z",
+      "vitals": {
+        "hr": 104,
+        "bp_systolic": 70,
+        "bp_diastolic": 118,
+        "spo2": 95,
+        "temp_f": 100.1,
+        "last_updated": "2026-07-10T08:29:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1097",
+      "name": "Theo Rasmussen",
+      "age": 49,
+      "bed": "A6",
+      "chief_complaint": "UTI symptoms",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T08:06:00Z",
+      "vitals": {
+        "hr": 103,
+        "bp_systolic": 114,
+        "bp_diastolic": 91,
+        "spo2": 92,
+        "temp_f": 100.1,
+        "last_updated": "2026-07-10T09:25:00Z"
+      },
+      "status": "awaiting imaging"
+    },
+    {
+      "patient_id": "P-1098",
+      "name": "Uma Nowak",
+      "age": 11,
+      "bed": "HALLWAY1",
+      "chief_complaint": "chest congestion",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T06:44:00Z",
+      "vitals": {
+        "hr": 99,
+        "bp_systolic": 149,
+        "bp_diastolic": 93,
+        "spo2": 92,
+        "temp_f": 100.7,
+        "last_updated": "2026-07-10T08:22:00Z"
+      },
+      "status": "waiting for bed"
+    },
+    {
+      "patient_id": "P-1099",
+      "name": "Ivan Castillo",
+      "age": 86,
+      "bed": "B6",
+      "chief_complaint": "asthma exacerbation",
+      "triage_level": 3,
+      "arrival_time": "2026-07-10T09:52:00Z",
+      "vitals": {
+        "hr": 90,
+        "bp_systolic": 122,
+        "bp_diastolic": 78,
+        "spo2": 90,
+        "temp_f": 99.9,
+        "last_updated": "2026-07-10T09:45:00Z"
+      },
+      "status": "awaiting labs"
+    },
+    {
+      "patient_id": "P-1100",
+      "name": "Jamal Castillo",
+      "age": 24,
+      "bed": "B3",
+      "chief_complaint": "seizure",
+      "triage_level": 4,
+      "arrival_time": "2026-07-10T09:29:00Z",
+      "vitals": {
+        "hr": 81,
+        "bp_systolic": 141,
+        "bp_diastolic": 92,
+        "spo2": 94,
+        "temp_f": 98.4,
+        "last_updated": "2026-07-10T08:53:00Z"
+      },
+      "status": "stable - monitoring"
+    },
+    {
+      "patient_id": "P-1101",
+      "name": "Farid Suarez",
+      "age": 59,
+      "bed": "HALLWAY2",
+      "chief_complaint": "concussion suspected",
+      "triage_level": 2,
+      "arrival_time": "2026-07-10T09:21:00Z",
+      "vitals": {
+        "hr": 85,
+        "bp_systolic": 149,
+        "bp_diastolic": 75,
+        "spo2": 95,
+        "temp_f": 98.0,
+        "last_updated": "2026-07-10T08:22:00Z"
+      },
+      "status": "stable - monitoring"
+    }
+  ],
+  "doctors": [
+    {
+      "doctor_id": "D-01",
+      "name": "Dr. Alan Whitfield",
+      "role": "Attending",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-02",
+      "name": "Dr. Renata Cruz",
+      "role": "Attending",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-03",
+      "name": "Dr. Samuel Okonjo",
+      "role": "Resident (PGY-2)",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-04",
+      "name": "Dr. Meredith Yang",
+      "role": "Resident (PGY-1)",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-05",
+      "name": "Dr. Priya Deshmukh",
+      "role": "Attending",
+      "specialty": "Pediatric Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-06",
+      "name": "Dr. Trevor Lindqvist",
+      "role": "Resident (PGY-3)",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on break"
+    },
+    {
+      "doctor_id": "D-07",
+      "name": "Dr. Naomi Fischer",
+      "role": "Attending",
+      "specialty": "Trauma Surgery",
+      "shift": "on-call",
+      "status": "paged"
+    },
+    {
+      "doctor_id": "D-08",
+      "name": "Dr. Elias Marchetti",
+      "role": "Attending",
+      "specialty": "Neurology (Stroke Team)",
+      "shift": "on-call",
+      "status": "en route"
+    },
+    {
+      "doctor_id": "D-09",
+      "name": "Dr. Grace Abernathy",
+      "role": "Resident (PGY-2)",
+      "specialty": "Emergency Medicine",
+      "shift": "day",
+      "status": "on floor"
+    },
+    {
+      "doctor_id": "D-10",
+      "name": "Dr. Owen Baptiste",
+      "role": "Attending",
+      "specialty": "Emergency Medicine",
+      "shift": "night",
+      "status": "off shift"
+    }
+  ],
+  "rooms": [
+    {
+      "room_id": "A1",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1088"
+    },
+    {
+      "room_id": "A2",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1066"
+    },
+    {
+      "room_id": "A3",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1042"
+    },
+    {
+      "room_id": "A4",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1055"
+    },
+    {
+      "room_id": "A5",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1047"
+    },
+    {
+      "room_id": "A6",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1065"
+    },
+    {
+      "room_id": "A7",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1043"
+    },
+    {
+      "room_id": "A8",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1052"
+    },
+    {
+      "room_id": "A9",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1050"
+    },
+    {
+      "room_id": "A10",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1085"
+    },
+    {
+      "room_id": "A11",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1053"
+    },
+    {
+      "room_id": "A12",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1056"
+    },
+    {
+      "room_id": "B1",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1044"
+    },
+    {
+      "room_id": "B2",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1051"
+    },
+    {
+      "room_id": "B3",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1061"
+    },
+    {
+      "room_id": "B4",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1048"
+    },
+    {
+      "room_id": "B5",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1062"
+    },
+    {
+      "room_id": "B6",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1054"
+    },
+    {
+      "room_id": "B7",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1079"
+    },
+    {
+      "room_id": "B8",
+      "type": "Standard Exam",
+      "status": "occupied",
+      "occupied_by": "P-1095"
+    },
+    {
+      "room_id": "PEDS1",
+      "type": "Pediatric Exam",
+      "status": "occupied",
+      "occupied_by": "P-1067"
+    },
+    {
+      "room_id": "PEDS2",
+      "type": "Pediatric Exam",
+      "status": "occupied",
+      "occupied_by": "P-1045"
+    },
+    {
+      "room_id": "PEDS3",
+      "type": "Pediatric Exam",
+      "status": "occupied",
+      "occupied_by": "P-1086"
+    },
+    {
+      "room_id": "TRAUMA1",
+      "type": "Trauma Bay",
+      "status": "available",
+      "occupied_by": null
+    },
+    {
+      "room_id": "TRAUMA2",
+      "type": "Trauma Bay",
+      "status": "occupied",
+      "occupied_by": "P-1075"
+    },
+    {
+      "room_id": "HALLWAY1",
+      "type": "Hallway Overflow",
+      "status": "occupied",
+      "occupied_by": "P-1059"
+    },
+    {
+      "room_id": "HALLWAY2",
+      "type": "Hallway Overflow",
+      "status": "occupied",
+      "occupied_by": "P-1078"
+    },
+    {
+      "room_id": "HALLWAY3",
+      "type": "Hallway Overflow",
+      "status": "available",
+      "occupied_by": null
+    }
+  ]
+}

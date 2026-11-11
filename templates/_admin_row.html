@@ -1,0 +1,16 @@
+<tr>
+<td>{{ p.bed or '—' }}</td>
+<td>{{ p.source_id or '—' }}</td>
+<td>{{ p.name }}</td>
+<td>{{ p.age if p.age is not none else '—' }}</td>
+<td>{{ p.chief_complaint or '' }}</td>
+<td>{{ p.triage_level if p.triage_level is not none else '' }}</td>
+<td>{{ p.status or '' }}</td>
+<td>{% if p.flags %}{% for f in p.flags %}<span class="tag issue">{{ f }}</span>{% endfor %}{% else %}<span class="tag ok">Complete</span>{% endif %}</td>
+<td><span class="tag {{ p.origin }}">{{ p.origin }}</span>{% if not p.active %} <span class="tag off">removed</span>{% endif %}</td>
+<td style="white-space:nowrap"><a class="btn{% if p.review == 'complete' %} sec{% endif %}" href="{{ url_for('patient_edit', pid=p.id) }}">{{ 'Verify' if p.review == 'incomplete' else 'Edit' }}</a>
+<form method="post" action="{{ url_for('patient_active', pid=p.id) }}" style="display:inline">
+<input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="active" value="0"><input type="hidden" name="tab" value="{{ tab }}">
+<input class="reason" name="reason" placeholder="Reason" required aria-label="Reason for removing {{ p.name }}">
+<button class="danger">Remove</button></form></td>
+</tr>

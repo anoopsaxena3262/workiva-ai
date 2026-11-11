@@ -1,0 +1,8 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>Audit log</h1>
+<form method="get"><select name="action" onchange="this.form.submit()" style="max-width:14em"><option value="">All actions</option>
+{% for a in actions %}<option {{ 'selected' if a == sel }}>{{ a }}</option>{% endfor %}</select></form>
+<table><tr><th>Time</th><th>Who</th><th>Action</th><th>Entity</th><th>Detail</th></tr>
+{% for r in rows %}<tr><td style="white-space:nowrap">{{ r.ts }}</td><td>{{ r.actor }}</td><td>{{ r.action }}</td><td>{{ r.entity }} {{ r.entity_id or '' }}</td><td><pre>{{ r.detail_pretty }}</pre></td></tr>
+{% else %}<tr><td colspan="5" class="muted">Nothing logged yet.</td></tr>{% endfor %}</table>
+<p class="muted">Showing latest 500. The log is append-only; the app has no edit or delete for it.</p>{% endblock %}

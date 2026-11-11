@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ER Status Board</title><link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}"></head>
+<body>
+<div id="stale">⚠ DISPLAY NOT UPDATING — data may be out of date. Check the laptop.</div>
+<div id="board">{% include "_board_body.html" %}</div>
+<script>
+// Refresh the board in place (no page flash). If the server stops answering, say so loudly.
+let last=Date.now();
+function local(){document.querySelectorAll('time[data-t]').forEach(e=>{const d=new Date(e.dataset.t);if(!isNaN(d))e.textContent=(d.toDateString()===new Date().toDateString()?'':d.toLocaleDateString([], {month:'short',day:'numeric'})+' ')+d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});});}
+function tick(){const d=new Date();document.getElementById('clock').textContent=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+ document.getElementById('stale').style.display=(Date.now()-last>45000)?'block':'none';}
+async function refresh(){try{const r=await fetch('/board/fragment',{cache:'no-store'});if(!r.ok)throw 0;
+ document.getElementById('board').innerHTML=await r.text();last=Date.now();local();}catch(e){} tick();}
+setInterval(refresh,10000);setInterval(tick,1000);tick();local();
+</script></body></html>

@@ -1,0 +1,49 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>Charts</h1>
+<p class="muted">{% if last_import %}Last import: {{ last_import.ts }} ({{ last_import.mode }}) {{ last_import.summary }}{% else %}No JSON imported yet — <a href="{{ url_for('import_json') }}">import a snapshot</a>.{% endif %}
+{% if pending_photos %} · <a href="{{ url_for('photos') }}">{{ pending_photos }} photo(s) awaiting transcription</a>{% endif %}</p>
+{% if notes.rooms_disagree and 'not_assigned_in_room' in notes.applied %}<p class="flash error">{{ notes.rooms_disagree }} room record(s) disagree with who is assigned. Those charts stay incomplete until someone verifies the bed.</p>{% endif %}
+{% if notes.vitals_after_snapshot %}<p class="flash error">{{ notes.vitals_after_snapshot }} vitals timestamps are later than the snapshot time.</p>{% endif %}
+
+<nav class="tabs">
+  <a class="{{ 'on' if tab == 'complete' }}" href="{{ url_for('admin_home', tab='complete') }}">Complete <span class="n">{{ complete|length }}</span></a>
+  <a class="{{ 'on' if tab == 'incomplete' }}" href="{{ url_for('admin_home', tab='incomplete') }}">Incomplete <span class="n">{{ incomplete|length }}</span></a>
+  <a class="{{ 'on' if tab == 'removed' }}" href="{{ url_for('admin_home', tab='removed') }}">Removed <span class="n">{{ removed|length }}</span></a>
+</nav>
+
+{% if tab == 'complete' %}
+<p class="muted">Accurate charts on the team board.</p>
+<table><tr><th>Bed</th><th>Patient ID</th><th>Name</th><th>Age</th><th>Complaint</th><th>Triage</th><th>Status</th><th>Issues</th><th>Source</th><th></th></tr>
+{% for p in complete %}{% include "_admin_row.html" %}
+{% else %}<tr><td colspan="10" class="muted">No complete charts.</td></tr>{% endfor %}
+</table>
+
+{% elif tab == 'incomplete' %}
+<p class="muted">Hidden from the team board. Open Verify, correct the record, and save. The chart moves to Complete when every issue is gone. Removing one asks for a reason and files it under Removed.</p>
+<table><tr><th>Bed</th><th>Patient ID</th><th>Name</th><th>Age</th><th>Complaint</th><th>Triage</th><th>Status</th><th>Issues</th><th>Source</th><th></th></tr>
+{% for p in incomplete %}{% include "_admin_row.html" %}
+{% else %}<tr><td colspan="10" class="muted">No incomplete charts.</td></tr>{% endfor %}
+</table>
+
+{% else %}
+<p class="muted">Taken off the board. The reason is what was entered when they were removed.</p>
+<table><tr><th>Bed</th><th>Patient ID</th><th>Name</th><th>Age</th><th>Status</th><th>Removed</th><th>By</th><th>Reason</th><th></th></tr>
+{% for p in removed %}
+<tr>
+<td>{{ p.bed or '—' }}</td>
+<td>{{ p.source_id or '—' }}</td>
+<td>{{ p.name }}</td>
+<td>{{ p.age if p.age is not none else '—' }}</td>
+<td>{{ p.status or '' }}</td>
+<td style="white-space:nowrap">{{ p.removed_at or '—' }}</td>
+<td>{{ p.removed_by or '—' }}</td>
+<td>{{ p.removed_reason or '—' }}</td>
+<td style="white-space:nowrap"><a class="btn sec" href="{{ url_for('patient_edit', pid=p.id) }}">Edit</a>
+<form method="post" action="{{ url_for('patient_active', pid=p.id) }}" style="display:inline">
+<input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="active" value="1"><input type="hidden" name="tab" value="removed">
+<button class="sec">Restore</button></form></td>
+</tr>
+{% else %}<tr><td colspan="9" class="muted">No removed charts.</td></tr>{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

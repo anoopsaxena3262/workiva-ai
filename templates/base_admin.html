@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ER Board Admin</title><link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}"></head><body>
+<nav><strong>ER Board Admin</strong>
+ <a href="{{ url_for('admin_home') }}">Patients</a>
+ <a href="{{ url_for('patient_new') }}">+ New patient</a>
+ <a href="{{ url_for('photos') }}">Photo entry</a>
+ <a href="{{ url_for('import_json') }}">JSON import</a>
+ <a href="{{ url_for('audit_view') }}">Audit log</a>
+ <a href="{{ url_for('board') }}" target="_blank">Open board ↗</a>
+</nav>
+<main>
+{% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+{% block body %}{% endblock %}
+</main></body></html>

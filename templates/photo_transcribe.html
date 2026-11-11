@@ -1,0 +1,19 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>Transcribe photo #{{ photo.id }}</h1>
+<div class="split">
+ <div class="panel"><img src="{{ url_for('upload_file', name=photo.filename) }}" alt="uploaded photo"><div class="muted">{{ photo.original_name }}</div></div>
+ <form method="post" class="panel"><input type="hidden" name="csrf" value="{{ csrf }}">
+  <label>Apply to</label>
+  <select name="target" id="target"><option value="new">➕ New patient (not on the board)</option>
+   {% for e in existing %}<option value="{{ e.id }}">{{ e.name }}{{ ' — ' ~ e.bed if e.bed }}</option>{% endfor %}</select>
+  <p class="muted">For an existing patient, current values are shown for reference; any field you leave BLANK keeps the existing value, and only changed fields are written and logged.</p>
+  {% set p = p or {} %}{% include "_patient_fields.html" %}
+  <p><button>Save to record</button></p>
+ </form>
+</div>
+<script>
+document.getElementById('target').addEventListener('change',async e=>{
+ if(e.target.value==='new')return;
+ const d=await (await fetch('/admin/photos/prefill/'+e.target.value)).json();
+ for(const [k,v] of Object.entries(d)){const el=document.querySelector('[name="'+k+'"]');if(el)el.value=v??'';}});
+</script>{% endblock %}

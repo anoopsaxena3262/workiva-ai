@@ -1,0 +1,49 @@
+{% set f = facility %}
+<header class="top">
+  <h1>{{ f.name if f else "No data loaded" }}</h1>
+  {% if f and f.system_status %}<div class="sys {{ sys_class }}">{{ f.system_status }}</div>{% endif %}
+  <div class="meta"><div id="clock"></div>
+    {% if f and f.snapshot_at %}<div>Data snapshot: <b><time data-t="{{ f.snapshot_at }}">{{ f.snapshot_at }}</time></b></div>{% endif %}
+    <div>{{ total }} complete{% if held %} · {{ held }} held for review{% endif %}{% if last_change %} · last edit <time data-t="{{ last_change }}">{{ last_change }}</time>{% endif %}</div></div>
+</header>
+{% if f and sys_class == 'bad' %}<div class="warnbar">NOT LIVE DATA — this board shows a saved snapshot. Confirm critical details with the patient's team.</div>{% endif %}
+{% if held %}<div class="heldbar">{{ held }} chart{{ 's' if held != 1 else '' }} with incomplete data {{ 'are' if held != 1 else 'is' }} not shown. A person is verifying {{ 'them' if held != 1 else 'it' }} before {{ 'they' if held != 1 else 'it' }} can appear here.</div>{% endif %}
+{% if chips %}
+<div class="rooms">
+  {% for c in chips %}<span class="chip {{ c.state }}" title="{{ c.type or '' }}">{{ c.name }}{% if c.n > 1 %} ×{{ c.n }}{% endif %}</span>{% endfor %}
+  <span class="legend"><i class="chip avail">open</i><i class="chip occ">complete chart</i></span>
+</div>
+{% endif %}
+<main>
+{% for rank, plist in groups %}
+  <section class="group g{{ rank }}">
+    <div class="ghead"><span>{{ TRIAGE_LABEL[rank] }}</span><span class="n">{{ plist|length }}</span></div>
+    <div class="cards">
+    {% for p in plist %}
+      <article class="card{{ ' dc' if p.discharged }}">
+        <div class="row1">
+          <div class="bed">{{ p.bed or "NO BED" }}{% if p.source_id %}<div class="pid">{{ p.source_id }}</div>{% endif %}</div>
+          <div class="name">{{ p.name }} <span class="age">{{ (p.age|string ~ ("y" if p.age is number else "")) if p.age is not none else "age ?" }}{{ " " ~ p.sex if p.sex else "" }}</span></div>
+        </div>
+        <div class="cc">{{ p.chief_complaint or "—" }}</div>
+        <div class="line">
+          {% if p.status %}<span class="status{{ ' crit' if 'critical' in p.status|lower }}">{{ p.status }}</span>{% endif %}
+          {% if p.triage_level is not none %}<span class="tri">Triage {{ p.triage_level }}</span>{% endif %}
+        </div>
+        <div class="vit">
+          <div><small>HR</small><span>{{ p.hr|fmt }}</span></div>
+          <div><small>BP</small><span>{{ p.bp|fmt }}</span></div>
+          <div class="{{ 'low' if p.spo2_low }}"><small>SpO₂</small><span>{{ p.spo2|fmt }}{% if p.spo2 is number %}%{% endif %}</span></div>
+          <div><small>TEMP °F</small><span>{{ p.temp|fmt }}</span></div>
+        </div>
+        {% if p.arrival_time %}<div class="vtime">Arrived (as given): {{ p.arrival_time }}</div>{% endif %}
+        {% if p.vitals_at %}<div class="vtime">Vitals as of <time data-t="{{ p.vitals_at }}">{{ p.vitals_at }}</time></div>{% endif %}
+        {% for fl in p.flags %}<span class="flag">⚠ {{ fl }}</span>{% endfor %}
+      </article>
+    {% endfor %}
+    </div>
+  </section>
+{% else %}
+  <div class="empty">{% if not f %}No patients on the board.<br>Import data at /admin/import{% elif held %}No complete charts to show yet. {{ held }} chart{{ 's' if held != 1 else '' }} waiting for data review.{% else %}No patients on the board.{% endif %}</div>
+{% endfor %}
+</main>

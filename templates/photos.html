@@ -1,0 +1,9 @@
+{% extends "base_admin.html" %}{% block body %}
+<h1>Photo-to-record</h1>
+<p class="muted">Upload a photo of a whiteboard / paper chart taken during the outage, then transcribe what you can read into a structured record. Photos are stored locally and linked in the audit log. (No automatic OCR — a person confirms every field.)</p>
+<form method="post" enctype="multipart/form-data" class="panel"><input type="hidden" name="csrf" value="{{ csrf }}">
+<label>Photo</label><input type="file" name="photo" accept="image/*" required> <p><button>Upload &amp; transcribe</button></p></form>
+<table><tr><th>Uploaded</th><th>File</th><th>By</th><th>State</th><th></th></tr>
+{% for p in photos %}<tr><td>{{ p.uploaded_at }}</td><td>{{ p.original_name }}</td><td>{{ p.actor }}</td>
+<td>{{ 'transcribed' if p.transcribed else 'pending' }}</td><td><a class="btn sec" href="{{ url_for('photo_transcribe', photo_id=p.id) }}">{{ 'View' if p.transcribed else 'Transcribe' }}</a></td></tr>
+{% else %}<tr><td colspan="5" class="muted">No photos.</td></tr>{% endfor %}</table>{% endblock %}
