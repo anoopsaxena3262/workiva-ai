@@ -6,31 +6,76 @@ Local setup, how to run, and how the ER Patient Status Board is built. Product c
 
 A Flask app and a SQLite file on one laptop. The public page is a wall board of emergency-department charts. The admin page imports a JSON snapshot, lists charts that need a person, and lets that person correct them. There is no network service, no login directory, and no model call.
 
-The supplied snapshot is `er_status_board_data.json`. On that file the import is 1 facility, 10 doctors, 28 rooms, 60 patients, and 59 vitals. `system_status` is an offline fallback, so the board shows a red “NOT LIVE DATA” bar.
+The sample snapshot ships in the repo at `er_status_board_data.json` (the project root, next to `app.py`). On that file the import is 1 facility, 10 doctors, 28 rooms, 60 patients, and 59 vitals. `system_status` is an offline fallback, so the board shows a red “NOT LIVE DATA” bar.
 
 ## Local setup
 
-Python 3.12 is what this checkout uses. From the repo root:
+A new checkout needs Python 3.12, a virtualenv, and one `pip install`. The database, the photo folder, and the session key are created when the app starts. There is no `.env` file to copy. Optional settings are shell variables on the command that starts the app.
+
+### 1. Get the code
 
 ```bash
+git clone https://github.com/anoopsaxena3262/workiva-ai.git
 cd workiva-ai
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
 ```
 
-`requirements.txt` is Flask 3 and PyYAML. The install needs network once. After that the app runs offline.
+### 2. Python environment
 
-The first request creates `er_board.db` from `schema.sql` and sets SQLite `user_version` to 2. An older database file is refused at startup and left untouched. Move it aside and import the JSON again.
+`requirements.txt` is Flask 3 and PyYAML. The install needs a network once. After that the app runs offline.
 
-These paths are created at runtime and are gitignored: `er_board.db`, `uploads/`, `.secret_key`.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install -r requirements.txt
+```
 
-## How to run
+Leave `.venv/` out of git. It is already in `.gitignore`.
+
+### 3. Database, uploads, and session key
+
+Do not create these by hand. Starting the app creates them in the repo root, and `.gitignore` already excludes them.
+
+| Path | Created when | What it holds |
+| --- | --- | --- |
+| `er_board.db` | First start, in `db.init_db()` | SQLite database. `schema.sql` is applied and `user_version` is set to 2. The file is empty of charts until the JSON import below. |
+| `uploads/` | `app.py` loads | Photo files from admin photo entry. Accepted types are jpg, png, gif, and webp, up to 25 MB. |
+| `.secret_key` | `app.py` loads | Random key that signs the admin session. File mode `600`. |
+
+Two files used at setup are already in the repo root. They are committed, and they are not created on startup.
+
+| Path | Where to look | What it is |
+| --- | --- | --- |
+| `er_status_board_data.json` | Project root, next to `app.py` | Sample ER snapshot. This is the file to upload on JSON import, and the file the tests load. |
+| `import_rules.yaml` | Project root, next to `app.py` | Rule catalog. The import page reads and writes this file. |
+
+To put the database somewhere else, set `ER_DB` to a path before starting. The default is `er_board.db` next to `app.py`.
+
+If startup stops with a schema-version message, the existing `er_board.db` is from an older build. Move that file aside, start again, and import the JSON. The old file is left as it was.
+
+### 4. Environment variables
+
+The process reads the shell. An empty value is the normal local setup: admin is open on this laptop, the database is `er_board.db`, and the rules file is `import_rules.yaml`.
+
+| Variable | Default | Effect |
+| --- | --- | --- |
+| `PORT` | `5050` | Listen port. macOS AirPlay often holds 5000, so 5050 is the default. |
+| `ADMIN_PIN` | empty | When set, `/admin` asks for this PIN. Empty means admin is open on the laptop. |
+| `ER_DB` | `er_board.db` | SQLite file. Tests point this at a temp file so they leave the local database alone. |
+| `ER_RULES` | `import_rules.yaml` | Rules file. Tests that change `enabled` copy the yaml and point this at the copy. |
+
+Example with a PIN:
+
+```bash
+ADMIN_PIN=1234 PORT=5050 .venv/bin/python app.py
+```
+
+### 5. Start and load the snapshot
 
 ```bash
 .venv/bin/python app.py
 ```
 
-The process binds to `127.0.0.1` only. The default port is **5050** because macOS AirPlay often holds 5000.
+The process binds to `127.0.0.1` only.
 
 | Page | URL |
 | --- | --- |
@@ -38,34 +83,25 @@ The process binds to `127.0.0.1` only. The default port is **5050** because macO
 | Admin | http://127.0.0.1:5050/admin |
 | JSON import and rules | http://127.0.0.1:5050/admin/import |
 
-Load the snapshot from **JSON import**: choose `er_status_board_data.json`, mode **Replace**, type `REPLACE`, then Import. Replace resets the live tables to that file. Merge updates and adds by id and leaves other rows.
+On **JSON import**, upload the sample from the project root: `er_status_board_data.json`. Mode **Replace**, type `REPLACE`, then Import. Replace resets the live tables to that file. Merge updates and adds by id and leaves other rows. Until that import, the board has no charts.
 
-`debug` is off. A change to Python or a template is picked up only after the process is restarted. `import_rules.yaml` and CSS are read from disk on each check or page load.
+`debug` is off. A change to Python or a template is picked up after the process is restarted. `import_rules.yaml` and CSS are read from disk on each check or page load.
 
 Stop the server with Ctrl+C in that terminal. If the port is still taken, the previous Python process is still listening; stop that process and start again.
 
-### Environment
+## Tests
 
-| Variable | Effect |
-| --- | --- |
-| `PORT` | Listen port. Default `5050`. |
-| `ADMIN_PIN` | When set, `/admin` asks for this PIN. Empty means admin is open on the laptop. |
-| `ER_DB` | SQLite path. Default `er_board.db` next to `app.py`. Tests set this to a temp file. |
-| `ER_RULES` | Rules file. Default `import_rules.yaml`. Tests point this at a copy so they do not rewrite the repo file. |
+Tests do not need the server running, and they do not use `er_board.db` or `uploads/`. `tests/test_fixture.py` sets `ER_DB` to a temp file before it imports the app, then loads `er_status_board_data.json` from the project root into that file.
 
-Example:
+From the repo root, with the virtualenv from step 2:
 
 ```bash
-ADMIN_PIN=1234 PORT=5050 .venv/bin/python app.py
+.venv/bin/python -m unittest discover tests -v
 ```
 
-### Tests
+The suite is 18 tests and takes about half a minute. A quiet run is `discover tests -q`. The tests check flags, the room record, verify, removal, and the yaml rules.
 
-```bash
-.venv/bin/python -m unittest discover tests -q
-```
-
-`tests/test_fixture.py` imports `er_status_board_data.json` into a throwaway database and checks flags, the room record, verify, and the yaml rules. It sets `ER_DB` before importing the app. Rule tests that flip `enabled` copy the yaml to a temp path and set `ER_RULES`.
+A test that turns a rule on or off copies `import_rules.yaml` to a temp path and sets `ER_RULES`. The copy in the repo stays as it was committed.
 
 ## Design
 
@@ -159,7 +195,7 @@ Photo upload accepts jpg, png, gif, and webp, stores the file under `uploads/`, 
 | `templates/` | Board, admin, verify, import, photos, audit |
 | `static/board.css`, `static/admin.css` | Board and admin styles, including the tab bar |
 | `tests/test_fixture.py` | Fixture import and the decisions above |
-| `er_status_board_data.json` | Sample snapshot |
+| `er_status_board_data.json` | Sample snapshot in the project root. Upload this file on JSON import. |
 | `decisions.md` | Choices made in review |
 | `rule-decision-log.md` | Rule catalog and the open “waiting for bed” item |
 | `cursor-feedback.md` | The review that started this pass |

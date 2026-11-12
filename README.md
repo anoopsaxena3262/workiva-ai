@@ -2,17 +2,29 @@
 
 Flask + SQLite. Runs on one laptop, binds to `127.0.0.1` only, no internet or CDN needed.
 
-## Run
+## Local setup
+
+Python 3.12. The full walkthrough, including what each local file is, is in `developer-guide.md`.
 
 ```bash
+git clone https://github.com/anoopsaxena3262/workiva-ai.git
 cd workiva-ai
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # once (needs network once; or copy the .venv)
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt   # once; needs network once
 .venv/bin/python app.py
 ```
 
+Starting the app creates three local files. They are gitignored. You do not create them, and there is no `.env` file.
+
+| Path | Role |
+| --- | --- |
+| `er_board.db` | SQLite database, schema from `schema.sql` (version 2). Empty until the JSON import below. Override the path with `ER_DB`. |
+| `uploads/` | Photo files from admin photo entry. |
+| `.secret_key` | Signs the admin session. |
+
 * Wall display: <http://127.0.0.1:5050/> (full-screen the browser, F11). Auto-refreshes every 10 s; shows a red banner if the server stops answering.
-* Admin: <http://127.0.0.1:5050/admin> → **JSON import** → upload `er_status_board_data.json`, mode *Replace*, type `REPLACE`.
-* Optional: `ADMIN_PIN=1234 .venv/bin/python app.py` requires a PIN for /admin. `PORT=...` changes the port (5000 is taken by AirPlay on macOS). Audit entries are stamped `local-admin`.
+* Sample data is already in the repo, at the project root: `er_status_board_data.json` (next to `app.py`). Admin: <http://127.0.0.1:5050/admin> → **JSON import** → upload that file, mode *Replace*, type `REPLACE`. Rules are the other root file, `import_rules.yaml`.
+* Optional shell variables, set on the start command: `ADMIN_PIN=1234` requires a PIN for /admin. `PORT=5050` is the default (5000 is taken by AirPlay on macOS). `ER_RULES` overrides `import_rules.yaml`. Audit entries are stamped `local-admin`.
+* An `er_board.db` from an older schema version is refused at startup and left untouched. Move it aside, start again, and re-import.
 
 ## Data-integrity rules
 
@@ -61,12 +73,14 @@ audit_log (id PK, ts, actor, action, entity, entity_id, detail JSON)
 ```
 Full DDL: `schema.sql` (applied automatically at startup).
 
-## Tests / upgrades
+## Tests
+
+No server, and no use of the local `er_board.db` or `uploads/`. The suite points `ER_DB` at a temp file and imports `er_status_board_data.json` from the project root into it.
 
 ```bash
-.venv/bin/python -m unittest discover tests -v   # imports the supplied JSON into a temp DB and asserts the flags
+.venv/bin/python -m unittest discover tests -v
 ```
-Schema is versioned (v2). An `er_board.db` from an older version is refused at startup (never modified); move it aside and re-import.
+
 Photos: jpg/png/gif/webp only. Photo save to an existing patient writes only fields you typed; blanks keep the current value.
 
 ## Files
